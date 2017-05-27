@@ -11296,19 +11296,19 @@ INSERT INTO white_cards VALUES (1141, 'The four arms of Vishnu.', 'X1',0.0,0.0,0
 
 
 
---INSERT INTO white_cards VALUES (1142, 'Being a busy adult with many important things to do.', 'X1');
---INSERT INTO white_cards VALUES (1143, 'Tripping balls.', 'X1');
---INSERT INTO white_cards VALUES (1144, 'Words, words, words.', 'X1');
---INSERT INTO white_cards VALUES (1145, 'Zeus''s sexual appetites.', 'X1');
---INSERT INTO white_cards VALUES (1066, 'A big black dick.', 'X1');
---INSERT INTO white_cards VALUES (1067, 'A beached whale.', 'X1');
---INSERT INTO white_cards VALUES (1068, 'A bloody pacifier.', 'X1');
---INSERT INTO white_cards VALUES (1069, 'A crappy little hand.', 'X1');
---INSERT INTO white_cards VALUES (1070, 'A low standard of living.', 'X1');
---INSERT INTO white_cards VALUES (1071, 'A nuanced critique.', 'X1');
---INSERT INTO white_cards VALUES (1072, 'Panty raids.', 'X1');
---INSERT INTO white_cards VALUES (1073, 'A passionate Latino lover.', 'X1');
---INSERT INTO white_cards VALUES (1074, 'A rival dojo.', 'X1');
+INSERT INTO white_cards VALUES (1142, 'Being a busy adult with many important things to do.', 'X1',0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1143, 'Tripping balls.', 'X1',0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1144, 'Words, words, words.', 'X1',0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1145, 'Zeus''s sexual appetites.', 'X1',0.0,0.0,0.6,0.0,0.0,0.4,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1066, 'A big black dick.', 'X1',0.0,0.0,0.6,0.0,0.0,0.0,0.0,0.0,0.0,0.4,0.0,0.0);
+INSERT INTO white_cards VALUES (1067, 'A beached whale.', 'X1',0.0,0.4,0.0,0.0,0.0,0.0,0.0,0.0,0.6,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1068, 'A bloody pacifier.', 'X1',1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1069, 'A crappy little hand.', 'X1',0.0,0.6,0.0,0.0,0.0,0.0,0.4,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1070, 'A low standard of living.', 'X1',0.0,0.0,0.0,0.0,0.5,0.0,0.6,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1071, 'A nuanced critique.', 'X1',0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1072, 'Panty raids.', 'X1',0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1073, 'A passionate Latino lover.', 'X1',0.0,0.0,0.5,0.0,0.0,0.0,0.0,0.0,0.0,0.5,0.0,0.0);
+INSERT INTO white_cards VALUES (1074, 'A rival dojo.', 'X1',0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
 --INSERT INTO white_cards VALUES (1075, 'A web of lies.', 'X1');
 --INSERT INTO white_cards VALUES (1076, 'A woman scorned.', 'X1');
 --INSERT INTO white_cards VALUES (1078, 'Apologizing.', 'X1');
