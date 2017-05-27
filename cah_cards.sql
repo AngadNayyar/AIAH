@@ -11333,6 +11333,7 @@ INSERT INTO white_cards VALUES (1217, 'A soulful rendition of "Ol'' Man River."'
 INSERT INTO white_cards VALUES (1218, 'Intimacy problems.', 'X2',0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
 INSERT INTO white_cards VALUES (1219, 'A sweaty, panting leather daddy.', 'X2', 0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
 
+
 --INSERT INTO white_cards VALUES (1220, 'Spring break!', 'X2');
 --INSERT INTO white_cards VALUES (1221, 'Being awesome at sex.', 'X2');
 --INSERT INTO white_cards VALUES (1222, 'Dining with cardboard cutouts of the cast of "Friends."', 'X2');
