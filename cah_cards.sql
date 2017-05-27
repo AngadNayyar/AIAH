@@ -1,4 +1,4 @@
--- Pretend You're Xyzzy cards by Andy Janata is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+﻿-- Pretend You're Xyzzy cards by Andy Janata is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
 -- Based on a work at www.cardsagainsthumanity.com.
 -- For more information, see http://creativecommons.org/licenses/by-nc-sa/3.0/
 
@@ -11183,71 +11183,61 @@ SELECT pg_catalog.setval('hibernate_sequence', 100591, true);
 -- TOC entry 1984 (class 0 OID 16415)
 -- Dependencies: 176
 -- Data for Name: white_cards; Type: TABLE DATA; Schema: public; Owner: pyx
--- Death/Harm
---   Random
---   Sexual
---   Political
---   Human
---   Religion
---   Controversial
---   Gross
---   Scientific
---   Racism
---   Location
---   Celebrity
 
-INSERT INTO white_cards VALUES (282, 'Michelle Obama''s arms.', NULL, 0, 0, 0, 0.6, 0, 0, 0, 0, 0, 0, 0, 0.4);
-INSERT INTO white_cards VALUES (124, 'White people.', NULL 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.0, 0, 0);
-INSERT INTO white_cards VALUES (393, 'An erection that lasts longer than four hours.', NULL);
-INSERT INTO white_cards VALUES (141, 'Panda sex.', NULL);
-INSERT INTO white_cards VALUES (121, 'Stifling a giggle at the mention of Hutus and Tutsis.', NULL);
-INSERT INTO white_cards VALUES (269, 'A middle-aged man on roller skates.', NULL);
-INSERT INTO white_cards VALUES (1, 'Coat hanger abortions.', NULL);
-INSERT INTO white_cards VALUES (138, 'Scrubbing under the folds.', NULL);
-INSERT INTO white_cards VALUES (275, 'Wearing underwear inside-out to avoid doing laundry.', NULL);
-INSERT INTO white_cards VALUES (3662, 'Canadian Kindness.', 'RS');
-INSERT INTO white_cards VALUES (1146, 'end First Expansion', NULL);
-INSERT INTO white_cards VALUES (3663, 'The world''s tallest midget.', 'RS');
-INSERT INTO white_cards VALUES (462, 'MechaHitler.', '1.2');
-INSERT INTO white_cards VALUES (463, 'Getting naked and watching Nickelodeon.', '1.2');
-INSERT INTO white_cards VALUES (464, 'Charisma.', '1.2');
-INSERT INTO white_cards VALUES (465, 'Morgan Freeman''s voice.', '1.2');
-INSERT INTO white_cards VALUES (466, 'Breaking out into song and dance.', '1.2');
-INSERT INTO white_cards VALUES (467, 'Soup that is too hot.', '1.2');
-INSERT INTO white_cards VALUES (468, 'Chutzpah.', '1.2');
-INSERT INTO white_cards VALUES (469, 'Unfathomable stupidity.', '1.2');
-INSERT INTO white_cards VALUES (470, 'Horrifying laser hair removal accidents.', '1.2');
-INSERT INTO white_cards VALUES (471, 'Boogers.', '1.2');
-INSERT INTO white_cards VALUES (3664, 'The shitty remains of Taco Bell&reg;.', 'RS');
-INSERT INTO white_cards VALUES (473, 'Expecting a burp and vomiting on the floor.', '1.2');
-INSERT INTO white_cards VALUES (474, 'A defective condom.', '1.2');
-INSERT INTO white_cards VALUES (475, 'Teenage pregnancy.', '1.2');
-INSERT INTO white_cards VALUES (476, 'Hot cheese.', '1.2');
-INSERT INTO white_cards VALUES (477, 'A mopey zoo lion.', '1.2');
-INSERT INTO white_cards VALUES (478, 'Shapeshifters.', '1.2');
-INSERT INTO white_cards VALUES (479, 'The Care Bear Stare.', '1.2');
-INSERT INTO white_cards VALUES (480, 'Erectile dysfunction.', '1.2');
-INSERT INTO white_cards VALUES (481, 'The chronic.', '1.2');
-INSERT INTO white_cards VALUES (483, '"Tweeting."', '1.2');
-INSERT INTO white_cards VALUES (484, 'Firing a rifle into the air while balls deep in a squealing hog.', '1.2');
-INSERT INTO white_cards VALUES (485, 'Nicolas Cage.', '1.2');
-INSERT INTO white_cards VALUES (3665, 'Master Chief.', 'RS');
-INSERT INTO white_cards VALUES (1110, 'Leveling up.', 'X1');
-INSERT INTO white_cards VALUES (1111, 'Literally eating shit.', 'X1');
-INSERT INTO white_cards VALUES (1112, 'Making the penises kiss.', 'X1');
-INSERT INTO white_cards VALUES (1113, 'Media coverage.', 'X1');
-INSERT INTO white_cards VALUES (3666, 'Four Loko.', 'RS');
-INSERT INTO white_cards VALUES (1115, 'Moral ambiguity.', 'X1');
-INSERT INTO white_cards VALUES (1116, 'My machete.', 'X1');
-INSERT INTO white_cards VALUES (1117, 'One thousand Slim Jims.', 'X1');
-INSERT INTO white_cards VALUES (1118, 'Ominous background music.', 'X1');
-INSERT INTO white_cards VALUES (1119, 'Overpowering your father.', 'X1');
-INSERT INTO white_cards VALUES (1120, 'Pistol-whipping a hostage.', 'X1');
-INSERT INTO white_cards VALUES (1121, 'Quiche.', 'X1');
-INSERT INTO white_cards VALUES (1122, 'Quivering jowls.', 'X1');
-INSERT INTO white_cards VALUES (1123, 'Revenge fucking.', 'X1');
-INSERT INTO white_cards VALUES (1124, 'Ripping into a man''s chest and pulling out his still-beating heart.', 'X1');
-INSERT INTO white_cards VALUES (1125, 'Ryan Gosling riding in on a white horse.', 'X1');
+-- Death/Harm   Random   Sexual  Political  Human   Religion   Controversial   Gross    Scientific   Racism   Location   Celebrity
+
+INSERT INTO white_cards VALUES (282, 'Michelle Obama''s arms.', NULL, 0.0, 0.0, 0.0, 0.6, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4);
+INSERT INTO white_cards VALUES (124, 'White people.', NULL, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (393, 'An erection that lasts longer than four hours.', NULL, 0, 0, 1.0, 0, 0, 0, 0, 0, 0, 1.0, 0, 0);
+INSERT INTO white_cards VALUES (141, 'Panda sex.', NULL, 0, 0, 1.0, 0, 0, 0, 0, 0, 0, 0.0, 0, 0);
+INSERT INTO white_cards VALUES (121, 'Stifling a giggle at the mention of Hutus and Tutsis.', NULL, 0.3, 0.0, 0.0, 0.2, 0.0, 0.0, 0.3, 0.0, 0.0, 0.2, 0.0, 0.0);
+INSERT INTO white_cards VALUES (269, 'A middle-aged man on roller skates.', NULL, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (1, 'Coat hanger abortions.', NULL, 0.2, 0.0, 0.0, 0.0, 0.2, 0.0, 0.6, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (138, 'Scrubbing under the folds.', NULL, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (275, 'Wearing underwear inside-out to avoid doing laundry.', NULL, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (3662, 'Canadian Kindness.', 'RS', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (1146, 'end First Expansion', NULL, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (3663, 'The world''s tallest midget.', 'RS', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (462, 'MechaHitler.', '1.2', 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (463, 'Getting naked and watching Nickelodeon.', '1.2', 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (464, 'Charisma.', '1.2', 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (465, 'Morgan Freeman''s voice.', '1.2', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0);
+INSERT INTO white_cards VALUES (466, 'Breaking out into song and dance.', '1.2', 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (467, 'Soup that is too hot.', '1.2', 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (468, 'Chutzpah.', '1.2', 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (469, 'Unfathomable stupidity.', '1.2', 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (470, 'Horrifying laser hair removal accidents.', '1.2', 0.5, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (471, 'Boogers.', '1.2' , 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (3664, 'The shitty remains of Taco Bell&reg;.', 'RS', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (473, 'Expecting a burp and vomiting on the floor.', '1.2', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (474, 'A defective condom.', '1.2', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+INSERT INTO white_cards VALUES (475, 'Teenage pregnancy.', '1.2', 0.0, 0.0, 0.3, 0.0, 0.0, 0.0, 0.7, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (476, 'Hot cheese.', '1.2', 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (477, 'A mopey zoo lion.', '1.2', 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (478, 'Shapeshifters.', '1.2', 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (479, 'The Care Bear Stare.', '1.2', 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (480, 'Erectile dysfunction.', '1.2', 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (481, 'The chronic.', '1.2', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0);
+INSERT INTO white_cards VALUES (483, '"Tweeting."', '1.2', 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (484, 'Firing a rifle into the air while balls deep in a squealing hog.', '1.2', 0.4, 0.0, 0.4, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (485, 'Nicolas Cage.', '1.2', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0);
+INSERT INTO white_cards VALUES (3665, 'Master Chief.', 'RS', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0);
+INSERT INTO white_cards VALUES (1110, 'Leveling up.', 'X1', 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (1111, 'Literally eating shit.', 'X1', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (1112, 'Making the penises kiss.', 'X1', 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (1113, 'Media coverage.', 'X1', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0);
+INSERT INTO white_cards VALUES (3666, 'Four Loko.', 'RS', 0.5, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (1115, 'Moral ambiguity.', 'X1', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (1116, 'My machete.', 'X1', 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (1117, 'One thousand Slim Jims.', 'X1', 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (1118, 'Ominous background music.', 'X1', 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (1119, 'Overpowering your father.', 'X1', 0.2, 0.0, 0.3, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (1120, 'Pistol-whipping a hostage.', 'X1', 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (1121, 'Quiche.', 'X1', 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (1122, 'Quivering jowls.', 'X1' , 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (1123, 'Revenge fucking.', 'X1', 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (1124, 'Ripping into a man''s chest and pulling out his still-beating heart.', 'X1', 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+INSERT INTO white_cards VALUES (1125, 'Ryan Gosling riding in on a white horse.', 'X1', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0);
 INSERT INTO white_cards VALUES (1126, 'Santa Claus.', 'X1',0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0);
 INSERT INTO white_cards VALUES (1127, 'Scrotum tickling.', 'X1',0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
 INSERT INTO white_cards VALUES (1128, 'Sexual humiliation.', 'X1',0.0,0.0,0.8,0.0,0.0,0.0,0.2,0.0,0.0,0.0,0.0,0.0);
@@ -11293,9 +11283,6 @@ INSERT INTO white_cards VALUES (1138, 'The harsh light of day.', 'X1',0.0,1.0,0.
 INSERT INTO white_cards VALUES (1139, 'The hiccups.', 'X1',0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
 INSERT INTO white_cards VALUES (1140, 'The shambling corpse of Larry King.', 'X1',0.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.5);
 INSERT INTO white_cards VALUES (1141, 'The four arms of Vishnu.', 'X1',0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0);
-
-
-
 INSERT INTO white_cards VALUES (1142, 'Being a busy adult with many important things to do.', 'X1',0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
 INSERT INTO white_cards VALUES (1143, 'Tripping balls.', 'X1',0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
 INSERT INTO white_cards VALUES (1144, 'Words, words, words.', 'X1',0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
@@ -11309,17 +11296,18 @@ INSERT INTO white_cards VALUES (1071, 'A nuanced critique.', 'X1',0.0,0.0,0.0,0.
 INSERT INTO white_cards VALUES (1072, 'Panty raids.', 'X1',0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
 INSERT INTO white_cards VALUES (1073, 'A passionate Latino lover.', 'X1',0.0,0.0,0.5,0.0,0.0,0.0,0.0,0.0,0.0,0.5,0.0,0.0);
 INSERT INTO white_cards VALUES (1074, 'A rival dojo.', 'X1',0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
---INSERT INTO white_cards VALUES (1075, 'A web of lies.', 'X1');
---INSERT INTO white_cards VALUES (1076, 'A woman scorned.', 'X1');
---INSERT INTO white_cards VALUES (1078, 'Apologizing.', 'X1');
---INSERT INTO white_cards VALUES (1079, 'Appreciative snapping.', 'X1');
---INSERT INTO white_cards VALUES (1080, 'Neil Patrick Harris.', 'X1');
---INSERT INTO white_cards VALUES (1081, 'Beating your wives.', 'X1');
---INSERT INTO white_cards VALUES (1082, 'Being a dinosaur.', 'X1');
---INSERT INTO white_cards VALUES (1083, 'Shaft.', 'X1');
---INSERT INTO white_cards VALUES (1217, 'A soulful rendition of "Ol'' Man River."', 'X2');
---INSERT INTO white_cards VALUES (1218, 'Intimacy problems.', 'X2');
---INSERT INTO white_cards VALUES (1219, 'A sweaty, panting leather daddy.', 'X2');
+INSERT INTO white_cards VALUES (1075, 'A web of lies.', 'X1',0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1076, 'A woman scorned.', 'X1',0.0,0.0,0.5,0.0,0.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1078, 'Apologizing.', 'X1',0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1080, 'Neil Patrick Harris.', 'X1',0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0);
+INSERT INTO white_cards VALUES (1081, 'Beating your wives.', 'X1',0.5,0.0,0.0,0.0,0.0,0.0,0.5,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1082, 'Being a dinosaur.', 'X1',0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1083, 'Shaft.', 'X1',0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1217, 'A soulful rendition of "Ol'' Man River."', 'X2',0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0);
+INSERT INTO white_cards VALUES (1218, 'Intimacy problems.', 'X2',0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1219, 'A sweaty, panting leather daddy.', 'X2', 0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+
+
 --INSERT INTO white_cards VALUES (1220, 'Spring break!', 'X2');
 --INSERT INTO white_cards VALUES (1221, 'Being awesome at sex.', 'X2');
 --INSERT INTO white_cards VALUES (1222, 'Dining with cardboard cutouts of the cast of "Friends."', 'X2');
