@@ -11299,17 +11299,20 @@ INSERT INTO white_cards VALUES (1141, 'The four arms of Vishnu.', 'X1',0.0,0.0,0
 --INSERT INTO white_cards VALUES (1072, 'Panty raids.', 'X1');
 --INSERT INTO white_cards VALUES (1073, 'A passionate Latino lover.', 'X1');
 --INSERT INTO white_cards VALUES (1074, 'A rival dojo.', 'X1');
---INSERT INTO white_cards VALUES (1075, 'A web of lies.', 'X1');
---INSERT INTO white_cards VALUES (1076, 'A woman scorned.', 'X1');
---INSERT INTO white_cards VALUES (1078, 'Apologizing.', 'X1');
---INSERT INTO white_cards VALUES (1079, 'Appreciative snapping.', 'X1');
---INSERT INTO white_cards VALUES (1080, 'Neil Patrick Harris.', 'X1');
---INSERT INTO white_cards VALUES (1081, 'Beating your wives.', 'X1');
---INSERT INTO white_cards VALUES (1082, 'Being a dinosaur.', 'X1');
---INSERT INTO white_cards VALUES (1083, 'Shaft.', 'X1');
---INSERT INTO white_cards VALUES (1217, 'A soulful rendition of "Ol'' Man River."', 'X2');
---INSERT INTO white_cards VALUES (1218, 'Intimacy problems.', 'X2');
---INSERT INTO white_cards VALUES (1219, 'A sweaty, panting leather daddy.', 'X2');
+
+-- Death/Harm   Random   Sexual  Political  Human   Religion   Controversial   Gross    Scientific   Racism   Location   Celebrity
+INSERT INTO white_cards VALUES (1075, 'A web of lies.', 'X1',0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1076, 'A woman scorned.', 'X1',0.0,0.0,0.5,0.0,0.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1078, 'Apologizing.', 'X1',0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1080, 'Neil Patrick Harris.', 'X1',0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0);
+INSERT INTO white_cards VALUES (1081, 'Beating your wives.', 'X1',0.5,0.0,0.0,0.0,0.0,0.0,0.5,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1082, 'Being a dinosaur.', 'X1',0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1083, 'Shaft.', 'X1',0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1217, 'A soulful rendition of "Ol'' Man River."', 'X2',0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0);
+INSERT INTO white_cards VALUES (1218, 'Intimacy problems.', 'X2',0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (1219, 'A sweaty, panting leather daddy.', 'X2', 0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+
+
 --INSERT INTO white_cards VALUES (1220, 'Spring break!', 'X2');
 --INSERT INTO white_cards VALUES (1221, 'Being awesome at sex.', 'X2');
 --INSERT INTO white_cards VALUES (1222, 'Dining with cardboard cutouts of the cast of "Friends."', 'X2');
