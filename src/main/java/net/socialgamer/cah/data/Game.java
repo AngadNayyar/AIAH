@@ -23,17 +23,7 @@
 
 package net.socialgamer.cah.data;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -837,6 +827,7 @@ public class Game {
 
     broadcastToPlayers(MessageType.GAME_EVENT, data);
 
+    // Finds AI player and plays card TODO based off player model
     for (Player p : players){
       if(p.getUser().getHostName().equals("1.1.1.1")){ // TODO this is a hack
         List<WhiteCard> aiCards = p.getHand();
@@ -844,7 +835,6 @@ public class Game {
         logger.info(aiCards.get(0).toString()); // Logs
         playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText()); // TODO play 2 cards case not working
       }
-
     }
 
     synchronized (roundTimerLock) {
@@ -1060,6 +1050,31 @@ public class Game {
     broadcastToPlayers(MessageType.GAME_EVENT, data);
 
     notifyPlayerInfoChange(getJudge());
+    int pickedCardId=0;
+
+    // If its AI pick a card based of user model
+    if (getJudge().getUser().getHostName().equals("1.1.1.1")) { //TODO this is a hack
+      // Get the cards that have been played
+      Collection<List<WhiteCard>> cardsToPick = playedCards.cards(); // Gets the lists of cards (pick 2 means it has to be a list)
+      while (cardsToPick.iterator().hasNext()){
+        List<WhiteCard> pickedCards = cardsToPick.iterator().next();
+        pickedCardId = pickedCards.get(0).getId();
+      }
+
+      logger.info("=============================================");
+      logger.info(cardsToPick.size()); // This return
+      judgeCard(getJudge().getUser(), pickedCardId ); //How do i get the user?
+    }
+
+//    for (Player p : players){
+//      if(p.getUser().getHostName().equals("1.1.1.1")){ // TODO this is a hack
+//        List<WhiteCard> aiCards = p.getHand();
+//        logger.info("--------------------------------------------------------------------------");
+//        logger.info(aiCards.get(0).toString()); // Logs
+//        playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText()); // TODO play 2 cards case not working
+//      }
+//    }
+
 
     synchronized (roundTimerLock) {
       final SafeTimerTask task = new SafeTimerTask() {
