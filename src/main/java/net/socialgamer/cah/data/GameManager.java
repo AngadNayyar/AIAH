@@ -130,6 +130,8 @@ public class GameManager implements Provider<Integer> {
       }
       try {
         game.addPlayer(user);
+        AIUser agent = new AIUser("AIAH agent", "1.1.1.1", false);
+        game.addPlayer(agent);
         logger.info(String.format("Created new game %d by user %s.",
             game.getId(), user.toString()));
       } catch (final IllegalStateException ise) {
