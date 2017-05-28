@@ -8,19 +8,11 @@ Unzip the source code into some directory. Open a command prompt in that directo
 
 To skip tests add this to the mvn command ```-DskipTests```
 
+------------------------------------------------------------
 
+Default Readme
 
-
-
-
-
-
-
-
-
-
-
-
+------------------------------------------------------------
 
 
 A Cards Against Humanity clone, server and web client. See WebContent/license.html for full details.
