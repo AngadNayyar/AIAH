@@ -837,6 +837,16 @@ public class Game {
 
     broadcastToPlayers(MessageType.GAME_EVENT, data);
 
+    for (Player p : players){
+      if(p.getUser().getHostName().equals("1.1.1.1")){ // TODO this is a hack
+        List<WhiteCard> aiCards = p.getHand();
+        logger.info("--------------------------------------------------------------------------");
+        logger.info(aiCards.get(0).toString()); // Logs
+        playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText()); // TODO play 2 cards case not working
+      }
+
+    }
+
     synchronized (roundTimerLock) {
       final SafeTimerTask task = new SafeTimerTask() {
         @Override
