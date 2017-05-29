@@ -829,10 +829,9 @@ public class Game {
 
     // Finds AI player and plays card TODO based off player model
     for (Player p : players){
-      if(p.getUser().getHostName().equals("1.1.1.1")){ // TODO this is a hack
+      if( (p.getUser().getHostName().equals("1.1.1.1")) && !(getJudge().getUser().getHostName().equals("1.1.1.1")) ){ // TODO this is a hack
         List<WhiteCard> aiCards = p.getHand();
-        logger.info("--------------------------------------------------------------------------");
-        logger.info(aiCards.get(0).toString()); // Logs
+        logger.info("--------------------------- AI is Selecting ---------------------------------");
         playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText()); // TODO play 2 cards case not working
       }
     }
@@ -1050,31 +1049,20 @@ public class Game {
     broadcastToPlayers(MessageType.GAME_EVENT, data);
 
     notifyPlayerInfoChange(getJudge());
-    int pickedCardId=0;
 
     // If its AI pick a card based of user model
+    int pickedCardId=0;
     if (getJudge().getUser().getHostName().equals("1.1.1.1")) { //TODO this is a hack
       // Get the cards that have been played
       Collection<List<WhiteCard>> cardsToPick = playedCards.cards(); // Gets the lists of cards (pick 2 means it has to be a list)
-      while (cardsToPick.iterator().hasNext()){
-        List<WhiteCard> pickedCards = cardsToPick.iterator().next();
-        pickedCardId = pickedCards.get(0).getId();
-      }
+      // Picks the first card from the first list
+      List<WhiteCard> pickedCards = cardsToPick.iterator().next();
+      pickedCardId = pickedCards.get(0).getId();
 
-      logger.info("=============================================");
-      logger.info(cardsToPick.size()); // This return
-      judgeCard(getJudge().getUser(), pickedCardId ); //How do i get the user?
+      logger.info("===================== AI IS THE JUDGE ========================");
+      judgeCard(getJudge().getUser(), pickedCardId );
+      startNextRound(); // This forces the next round to start, there is no timer 
     }
-
-//    for (Player p : players){
-//      if(p.getUser().getHostName().equals("1.1.1.1")){ // TODO this is a hack
-//        List<WhiteCard> aiCards = p.getHand();
-//        logger.info("--------------------------------------------------------------------------");
-//        logger.info(aiCards.get(0).toString()); // Logs
-//        playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText()); // TODO play 2 cards case not working
-//      }
-//    }
-
 
     synchronized (roundTimerLock) {
       final SafeTimerTask task = new SafeTimerTask() {
