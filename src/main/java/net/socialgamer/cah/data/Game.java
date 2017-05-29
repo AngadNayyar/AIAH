@@ -1556,8 +1556,34 @@ public class Game {
   private int chooseWinningCardAI(){
     // Get the cards that have been played
     Collection<List<WhiteCard>> cardsToPick = playedCards.cards(); // Gets the lists of cards (pick 2 means it has to be a list)
-    // Picks the first card from the first list
+//    int bestRating = 0;
+//    WhiteCard bestCard = cardsToPick.iterator().next().get(0); // Best card is the fist card
+//
+//    // Look through each players selection
+//    for (List<WhiteCard> wc : cardsToPick){
+//      WhiteCard chosenCard = wc.get(0); // TODO handle pick 2
+//      Player playerWhoPlayedCard = playedCards.getPlayerForId(chosenCard.getId());
+//      int rating = cardScore(chosenCard, playerWhoPlayedCard);
+//      if ( rating > bestRating){
+//        bestRating = rating;
+//        bestCard = chosenCard;
+//      }
+//    }
+
+    // Picks the first card from the first list TODO remove
     List<WhiteCard> pickedCards = cardsToPick.iterator().next();
+
     return pickedCards.get(0).getId();
+  }
+
+  /**
+   * Calculates the score of a card based off of a player
+   * @param wc WhiteCard scores to be calculated for
+   * @param p Player to whose player model is used to calculate score
+   * @return score for that card
+   */
+  private int cardScore(WhiteCard wc, Player p){
+    //TODO
+    return 0;
   }
 }
