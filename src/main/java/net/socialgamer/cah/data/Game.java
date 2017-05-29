@@ -832,7 +832,15 @@ public class Game {
       if( (p.getUser().getHostName().equals("1.1.1.1")) && !(getJudge().getUser().getHostName().equals("1.1.1.1")) ){ // TODO this is a hack
         List<WhiteCard> aiCards = p.getHand();
         logger.info("--------------------------- AI is Selecting ---------------------------------");
-        playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText()); // TODO play 2 cards case not working
+        // Selects the first card (or fist 2 cards if pick 2)
+        if (blackCard.getPick() == 2){
+          playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText());
+          playCard(p.getUser(), aiCards.get(1).getId(), aiCards.get(1).getText());
+        } else {
+          playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText());
+        }
+
+
       }
     }
 
