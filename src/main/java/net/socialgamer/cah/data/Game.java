@@ -827,22 +827,7 @@ public class Game {
 
     broadcastToPlayers(MessageType.GAME_EVENT, data);
 
-    // Finds AI player and plays card TODO based off player model
-    for (Player p : players){
-      if( (p.getUser().getHostName().equals("1.1.1.1")) && !(getJudge().getUser().getHostName().equals("1.1.1.1")) ){ // TODO this is a hack
-        List<WhiteCard> aiCards = p.getHand();
-        logger.info("--------------------------- AI is Selecting ---------------------------------");
-        // Selects the first card (or fist 2 cards if pick 2)
-        if (blackCard.getPick() == 2){
-          playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText());
-          playCard(p.getUser(), aiCards.get(1).getId(), aiCards.get(1).getText());
-        } else {
-          playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText());
-        }
-
-
-      }
-    }
+    playCardIfAI();
 
     synchronized (roundTimerLock) {
       final SafeTimerTask task = new SafeTimerTask() {
@@ -1058,19 +1043,7 @@ public class Game {
 
     notifyPlayerInfoChange(getJudge());
 
-    // If its AI pick a card based of user model
-    int pickedCardId=0;
-    if (getJudge().getUser().getHostName().equals("1.1.1.1")) { //TODO this is a hack
-      // Get the cards that have been played
-      Collection<List<WhiteCard>> cardsToPick = playedCards.cards(); // Gets the lists of cards (pick 2 means it has to be a list)
-      // Picks the first card from the first list
-      List<WhiteCard> pickedCards = cardsToPick.iterator().next();
-      pickedCardId = pickedCards.get(0).getId();
-
-      logger.info("===================== AI IS THE JUDGE ========================");
-      judgeCard(getJudge().getUser(), pickedCardId );
-      startNextRound(); // This forces the next round to start, there is no timer 
-    }
+    judgeCardIfAI();
 
     synchronized (roundTimerLock) {
       final SafeTimerTask task = new SafeTimerTask() {
@@ -1534,5 +1507,56 @@ public class Game {
    */
   public class TooManySpectatorsException extends Exception {
     private static final long serialVersionUID = -6603422097641992018L;
+  }
+
+  /**
+   * Method that checks if AI is playing and if so, selects a card to play
+   */
+  private void playCardIfAI(){
+    // Finds AI player and plays card
+    for (Player p : players){
+      if( (p.getUser().getHostName().equals("1.1.1.1")) && !(getJudge().getUser().getHostName().equals("1.1.1.1")) ){ // TODO this is a hack
+        chooseCardToPlayAI(p);
+        return;
+      }
+    }
+  }
+
+  /**
+   * Method that determines the card to play, then plays it
+   * @param p AI player
+   */
+  private void chooseCardToPlayAI(Player p){
+    List<WhiteCard> aiCards = p.getHand();
+    // Selects the first card (or fist 2 cards if pick 2)
+    if (blackCard.getPick() == 2){
+      playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText());
+      playCard(p.getUser(), aiCards.get(1).getId(), aiCards.get(1).getText());
+    } else {
+      playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText());
+    }
+  }
+
+  /**
+   * Method that checks if the AI is the judge, and if so chooses card that wins
+   */
+  private void judgeCardIfAI(){
+    if (getJudge().getUser().getHostName().equals("1.1.1.1")) { //TODO this is a hack
+      int pickedCardId = chooseWinningCardAI();
+      judgeCard(getJudge().getUser(), pickedCardId );
+      startNextRound(); // This forces the next round to start, there is no timer
+    }
+  }
+
+  /**
+   * Determines the winning card to be chosen by the AI
+   * @return winning cards id
+   */
+  private int chooseWinningCardAI(){
+    // Get the cards that have been played
+    Collection<List<WhiteCard>> cardsToPick = playedCards.cards(); // Gets the lists of cards (pick 2 means it has to be a list)
+    // Picks the first card from the first list
+    List<WhiteCard> pickedCards = cardsToPick.iterator().next();
+    return pickedCards.get(0).getId();
   }
 }
