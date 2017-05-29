@@ -38,6 +38,8 @@ import java.util.concurrent.PriorityBlockingQueue;
  */
 public class User {
 
+  private boolean isAI;
+
   private final String nickname;
 
   private final PriorityBlockingQueue<QueuedMessage> queuedMessages;
@@ -63,7 +65,7 @@ public class User {
 
   /**
    * Create a new user.
-   * 
+   *
    * @param nickname
    *          The user's nickname.
    * @param hostName
@@ -76,6 +78,25 @@ public class User {
     this.hostName = hostName;
     this.isAdmin = isAdmin;
     queuedMessages = new PriorityBlockingQueue<QueuedMessage>();
+    isAI = false;
+  }
+
+  /**
+   * Create a new user (when creating AIUser).
+   *
+   * @param nickname
+   *          The user's nickname.
+   * @param hostName
+   *          The user's Internet hostname (which will likely just be their IP address).
+   * @param isAdmin
+   *          Whether this user is an admin.
+   */
+  public User(String nickname, String hostName, boolean isAdmin, boolean isAI) {
+    this.nickname = nickname;
+    this.hostName = hostName;
+    this.isAdmin = isAdmin;
+    queuedMessages = new PriorityBlockingQueue<QueuedMessage>();
+    this.isAI = isAI;
   }
 
   /**
@@ -244,5 +265,9 @@ public class User {
 
   public List<Long> getLastMessageTimes() {
     return lastMessageTimes;
+  }
+
+  public boolean isARobot(){
+    return isAI;
   }
 }

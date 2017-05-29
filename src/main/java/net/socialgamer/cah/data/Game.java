@@ -1516,7 +1516,7 @@ public class Game {
     // Finds AI player and plays card
     for (Player p : players){
       // Chooses a card if the player is an AI (and isn't a judge)
-      if( (p.getUser().getHostName().equals("1.1.1.1")) && !(getJudge().getUser().getHostName().equals("1.1.1.1")) ){
+      if( (p.getUser().isARobot()) && !(getJudge().getUser().isARobot()) ){
         chooseCardToPlayAI(p);
         return;
       }
@@ -1542,7 +1542,7 @@ public class Game {
    * Method that checks if the AI is the judge, and if so chooses card that wins
    */
   private void judgeCardIfAI(){
-    if (getJudge().getUser().getHostName().equals("1.1.1.1")) {
+    if (getJudge().getUser().isARobot()) {
       int pickedCardId = chooseWinningCardAI();
       judgeCard(getJudge().getUser(), pickedCardId );
       startNextRound(); // This forces the next round to start, there is no timer

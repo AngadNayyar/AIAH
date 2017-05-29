@@ -14,7 +14,8 @@ package net.socialgamer.cah.data;
      * @param isAdmin
      */
     public AIUser(String nickname, String hostName, boolean isAdmin) {
-        super(nickname, hostName, isAdmin);
+        // True in this sets the users isAI field to be true
+        super(nickname, hostName, isAdmin, true);
     }
 
 
