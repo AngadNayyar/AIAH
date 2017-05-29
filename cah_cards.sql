@@ -153,19 +153,19 @@ ALTER TABLE hibernate_sequence OWNER TO pyx;
 CREATE TABLE white_cards (
     id integer NOT NULL,
     text character varying(255) NOT NULL,
-    Death/Harm double NOT NULL DEFAULT 0.0,
-    Random double NOT NULL DEFAULT 0.0,
-    Sexual double NOT NULL DEFAULT 0.0,
-    Political double NOT NULL DEFAULT 0.0,
-    Human double NOT NULL DEFAULT 0.0,
-    Religion double NOT NULL DEFAULT 0.0,
-    Controversial double NOT NULL DEFAULT 0.0,
-    Gross double NOT NULL DEFAULT 0.0,
-    Scientific double NOT NULL DEFAULT 0.0,
-    Racism double NOT NULL DEFAULT 0.0,
-    Location double NOT NULL DEFAULT 0.0,
-    Celebrity double NOT NULL DEFAULT 0.0,
     watermark character varying(5)
+    deathHarm real NOT NULL DEFAULT 0.0,
+    random real NOT NULL DEFAULT 0.0,
+    sexual real NOT NULL DEFAULT 0.0,
+    political real NOT NULL DEFAULT 0.0,
+    human real NOT NULL DEFAULT 0.0,
+    religion real NOT NULL DEFAULT 0.0,
+    controversial real NOT NULL DEFAULT 0.0,
+    gross real NOT NULL DEFAULT 0.0,
+    scientific real NOT NULL DEFAULT 0.0,
+    racism real NOT NULL DEFAULT 0.0,
+    location real NOT NULL DEFAULT 0.0,
+    celebrity real NOT NULL DEFAULT 0.0,
 );
 
 
@@ -3174,6 +3174,7 @@ INSERT INTO card_set_black_card VALUES (100219, 790);
 INSERT INTO card_set_black_card VALUES (100219, 789);
 INSERT INTO card_set_black_card VALUES (100219, 788);
 INSERT INTO card_set_black_card VALUES (100219, 787);
+INSERT INTO card_set_black_card VALUES (100219, 786);
 INSERT INTO card_set_black_card VALUES (100219, 786);
 INSERT INTO card_set_black_card VALUES (100219, 785);
 INSERT INTO card_set_black_card VALUES (100219, 799);
@@ -11210,7 +11211,7 @@ INSERT INTO white_cards VALUES (470, 'Horrifying laser hair removal accidents.',
 INSERT INTO white_cards VALUES (471, 'Boogers.', '1.2' , 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0);
 INSERT INTO white_cards VALUES (3664, 'The shitty remains of Taco Bell&reg;.', 'RS', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0);
 INSERT INTO white_cards VALUES (473, 'Expecting a burp and vomiting on the floor.', '1.2', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-INSERT INTO white_cards VALUES (474, 'A defective condom.', '1.2', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+INSERT INTO white_cards VALUES (474, 'A defective condom.', '1.2', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 INSERT INTO white_cards VALUES (475, 'Teenage pregnancy.', '1.2', 0.0, 0.0, 0.3, 0.0, 0.0, 0.0, 0.7, 0.0, 0.0, 0.0, 0.0, 0.0);
 INSERT INTO white_cards VALUES (476, 'Hot cheese.', '1.2', 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 INSERT INTO white_cards VALUES (477, 'A mopey zoo lion.', '1.2', 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
@@ -11307,31 +11308,28 @@ INSERT INTO white_cards VALUES (1217, 'A soulful rendition of "Ol'' Man River."'
 INSERT INTO white_cards VALUES (1218, 'Intimacy problems.', 'X2',0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
 INSERT INTO white_cards VALUES (1219, 'A sweaty, panting leather daddy.', 'X2', 0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
 
---INSERT INTO white_cards VALUES (1142, 'Being a busy adult with many important things to do.', 'X1');
---INSERT INTO white_cards VALUES (1143, 'Tripping balls.', 'X1');
---INSERT INTO white_cards VALUES (1144, 'Words, words, words.', 'X1');
---INSERT INTO white_cards VALUES (1145, 'Zeus''s sexual appetites.', 'X1');
---INSERT INTO white_cards VALUES (1066, 'A big black dick.', 'X1');
---INSERT INTO white_cards VALUES (1067, 'A beached whale.', 'X1');
---INSERT INTO white_cards VALUES (1068, 'A bloody pacifier.', 'X1');
---INSERT INTO white_cards VALUES (1069, 'A crappy little hand.', 'X1');
---INSERT INTO white_cards VALUES (1070, 'A low standard of living.', 'X1');
---INSERT INTO white_cards VALUES (1071, 'A nuanced critique.', 'X1');
---INSERT INTO white_cards VALUES (1072, 'Panty raids.', 'X1');
---INSERT INTO white_cards VALUES (1073, 'A passionate Latino lover.', 'X1');
---INSERT INTO white_cards VALUES (1074, 'A rival dojo.', 'X1');
 
 -- Death/Harm   Random   Sexual  Political  Human   Religion   Controversial   Gross    Scientific   Racism   Location   Celebrity
-INSERT INTO white_cards VALUES (1075, 'A web of lies.', 'X1',0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
-INSERT INTO white_cards VALUES (1076, 'A woman scorned.', 'X1',0.0,0.0,0.5,0.0,0.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
-INSERT INTO white_cards VALUES (1078, 'Apologizing.', 'X1',0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
-INSERT INTO white_cards VALUES (1080, 'Neil Patrick Harris.', 'X1',0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0);
-INSERT INTO white_cards VALUES (1081, 'Beating your wives.', 'X1',0.5,0.0,0.0,0.0,0.0,0.0,0.5,0.0,0.0,0.0,0.0,0.0);
-INSERT INTO white_cards VALUES (1082, 'Being a dinosaur.', 'X1',0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0);
-INSERT INTO white_cards VALUES (1083, 'Shaft.', 'X1',0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
-INSERT INTO white_cards VALUES (1217, 'A soulful rendition of "Ol'' Man River."', 'X2',0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0);
-INSERT INTO white_cards VALUES (1218, 'Intimacy problems.', 'X2',0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
-INSERT INTO white_cards VALUES (1219, 'A sweaty, panting leather daddy.', 'X2', 0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (44, 'German dungeon porn.', NULL, 0.0,0.0,0.5,0.0,0.0,0.0,0.0,0.0,0.0,0.5,0.0,0.0);
+INSERT INTO white_cards VALUES (40, 'Praying the gay away.', NULL, 0.0,0.0,0.1,0.0,0.0,0.1,0.8,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (63, 'Dying.', NULL, 0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (41, 'Same-sex ice dancing.', NULL, 0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (70, 'Dying of dysentery.', NULL, 0.8,0.0,0.0,0.0,0.0,0.0,0.0,0.2,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (19, 'Roofies.', NULL , 1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (22, 'The Big Bang.', NULL, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (23, 'Amputees.', NULL, 0.3,0.0,0.0,0.0,0.7,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (74, 'Men.', NULL, 0.0,0.0,0.3,0.0,0.7,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (18, 'Concealing a boner.', NULL, 0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (87, 'Agriculture.', NULL, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (51, 'Making a pouty face.', NULL, 0.0,0.5,0.0,0.0,0.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (98, 'YOU MUST CONSTRUCT ADDITIONAL PYLONS.', NULL, 0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (60, 'Hormone injections.', NULL, 0.0,0.0,0.7,0.0,0.3,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (55, 'Tom Cruise.', NULL, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0);
+INSERT INTO white_cards VALUES (56, 'Object permanence.', NULL, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (92, 'Consultants.', NULL, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+INSERT INTO white_cards VALUES (26, 'Being marginalized.', NULL, 0.0,0.0,0.0,0.0,0.1,0.3,0.3,0.0,0.0,0.3,0.0,0.0);
+INSERT INTO white_cards VALUES (54, 'The profoundly handicapped.', NULL, 0.0,0.0,0.0,0.0,0.3,0.0,0.7,0.0,0.0,0.0,0.0,0.0);
+
 
 
 --INSERT INTO white_cards VALUES (1220, 'Spring break!', 'X2');

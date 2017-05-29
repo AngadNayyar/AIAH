@@ -108,6 +108,7 @@ cah.$.WhiteCardData.WRITE_IN = "wi";
 cah.$.WhiteCardData.TEXT = "T";
 cah.$.WhiteCardData.ID = "cid";
 cah.$.WhiteCardData.WATERMARK = "W";
+cah.$.WhiteCardData.DEATHHARM = "0.0";
 
 cah.$.LongPollResponse = function() {
   // Dummy constructor to make Eclipse auto-complete.

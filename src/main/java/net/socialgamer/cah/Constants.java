@@ -521,7 +521,8 @@ public class Constants {
     ID(AjaxRequest.CARD_ID),
     TEXT("T"),
     WATERMARK("W"),
-    WRITE_IN("wi");
+    WRITE_IN("wi"),
+    DEATHHARM("0.0");
 
     private final String key;
 

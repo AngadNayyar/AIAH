@@ -837,6 +837,12 @@ public class Game {
 
     broadcastToPlayers(MessageType.GAME_EVENT, data);
 
+    for (Player p: players){
+      List<WhiteCard> hand = p.getHand();
+      logger.info("--------------------------------");
+      logger.info(hand.get(0).toString());
+    }
+
     synchronized (roundTimerLock) {
       final SafeTimerTask task = new SafeTimerTask() {
         @Override
