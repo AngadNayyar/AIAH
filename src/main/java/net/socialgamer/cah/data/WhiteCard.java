@@ -16,6 +16,59 @@ public abstract class WhiteCard {
 
   public abstract boolean isWriteIn();
 
+  // Abstract Getters
+
+  public abstract double getDeathHarm();
+
+  public abstract double getSexual();
+
+  public abstract double getPolitical();
+
+  public abstract double getHuman();
+
+  public abstract double getReligion();
+
+  public abstract double getControversial();
+
+  public abstract double getGross();
+
+  public abstract double getScientific();
+
+  public abstract double getRacism();
+
+  public abstract double getLocation();
+
+  public abstract double getCelebrity();
+
+  public abstract double getRandom();
+
+  // Abstract Setters
+  public abstract void setDeathHarm(double deathHarm);
+
+  public abstract void setRandom(double random);
+
+  public abstract void setPolitical(double political);
+
+  public abstract void setHuman(double human);
+
+  public abstract void setReligion(double religion);
+
+  public abstract void setControversial(double controversial);
+
+  public abstract void setGross(double gross);
+
+  public abstract void setScientific(double scientific);
+
+  public abstract void setRacism(double racism);
+
+  public abstract void setLocation(double location);
+
+  public abstract void setCelebrity(double celebrity);
+
+  public abstract void setSexual(double sexual);
+
+
+
   @Override
   public final boolean equals(final Object other) {
     if (!(other instanceof WhiteCard)) {
