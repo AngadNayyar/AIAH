@@ -107,12 +107,12 @@ public class PyxWhiteCard extends WhiteCard {
     this.celebrity = celebrity;
   }
 
-  public void setSexual(double sexual) {
-    this.sexual = sexual;
-  }
-
   public double getSexual() {
     return sexual;
+  }
+
+  public void setSexual(double sexual) {
+    this.sexual = sexual;
   }
 
   public double getPolitical() {
@@ -150,6 +150,7 @@ public class PyxWhiteCard extends WhiteCard {
   public double getCelebrity() {
     return celebrity;
   }
+
 
   public double getRandom() {
     return random;
