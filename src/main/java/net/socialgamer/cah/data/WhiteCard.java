@@ -17,6 +17,9 @@ public abstract class WhiteCard {
   public abstract boolean isWriteIn();
 
   // Abstract Getters
+
+  public abstract double getDeathHarm();
+
   public abstract double getSexual();
 
   public abstract double getPolitical();
@@ -40,6 +43,8 @@ public abstract class WhiteCard {
   public abstract double getRandom();
 
   // Abstract Setters
+  public abstract void setDeathHarm(double deathHarm);
+
   public abstract void setRandom(double random);
 
   public abstract void setPolitical(double political);

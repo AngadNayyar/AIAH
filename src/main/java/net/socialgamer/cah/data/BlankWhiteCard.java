@@ -11,6 +11,11 @@ public class BlankWhiteCard extends WhiteCard {
   }
 
   // This wont be used
+
+  public void setDeathHarm(double deathHarm) {
+
+  }
+
   public void setRandom(double random) {
 
   }
@@ -53,6 +58,10 @@ public class BlankWhiteCard extends WhiteCard {
 
   public void setSexual(double sexual) {
 
+  }
+
+  public double getDeathHarm() {
+    return 0;
   }
 
   public double getSexual() {
