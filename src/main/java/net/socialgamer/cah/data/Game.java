@@ -63,10 +63,9 @@ import org.apache.http.client.methods.*;
 import org.apache.http.client.utils.*;
 import org.apache.http.entity.*;
 import org.json.*;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.*;
-import org.json.simple.parser.*;
+//import org.json.simple.JSONArray;
+//import org.json.simple.JSONObject;
+//import org.json.simple.parser.*;
 import org.xml.sax.*;
 
 
@@ -1664,25 +1663,19 @@ public class Game {
     }
     int getStatusCode = getResponse.getStatusLine().getStatusCode();
 
-
     try {
       String responseAsString = EntityUtils.toString(getResponse.getEntity());
       logger.info(String.format("URI response entity: %s.", responseAsString));
 
-
-      JSONParser parser = new JSONParser();
-      JSONObject obj = (JSONObject) parser.parse(responseAsString);
-
+      JSONObject obj = new JSONObject(responseAsString);
       JSONArray arr = obj.getJSONArray("related");
       for (int i = 0; i < arr.length(); i++)
       {
-        String weight = arr.getJSONObject(i).getString("weight");
-        logger.info(String.format("URI weight %s.", weight));
+        double weight = arr.getJSONObject(i).getDouble("weight");
+        logger.info(String.format("URI weight %f.", weight));
       }
 
     } catch (IOException e) {
-      e.printStackTrace();
-    } catch (org.json.simple.parser.ParseException e) {
       e.printStackTrace();
     }
 
