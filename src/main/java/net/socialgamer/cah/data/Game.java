@@ -1749,10 +1749,14 @@ public class Game {
       temp += playerModel[10] * wc.getLocation();
       temp += playerModel[11] * wc.getCelebrity();
 
+      double relatedness = calculateRelatedness(wc);
+
       cards[index] = new Pair(index,temp);
       index++;
     }
     Arrays.sort(cards);
+
+
 
     List<WhiteCard> chosen = new LinkedList<WhiteCard>();
     chosen.add(hand.get(cards[0].index));
@@ -1798,7 +1802,7 @@ public class Game {
     List<WhiteCard> pickedCards = cardsToPick.iterator().next();
 
     // do this for each card and add to the user model calc
-    double relatedness = calculateRelatedness();
+
 
     return pickedCards.get(0).getId();
   }
@@ -1816,15 +1820,33 @@ public class Game {
 
 
   // this is to calculate the sense with concept net.
-  private double calculateRelatedness() {
+  private double calculateRelatedness(WhiteCard whiteCard) {
 
     logger.info("-----------------calculate relatedness-------------------");
+    String s = whiteCard.getText();
+    String s0 = s.replace("'", "");
+    String s1 = s0.replace(" ", "_");
+    String s2 = s1.replace(".", "");
+    String whiteCardContent = s2.toLowerCase();
 
-    String uri = "http://api.conceptnet.io/related/c/en/tea_kettle?filter=/c/en/coffee_pot";
+    String bl = blackCard.getText();
+    String b = bl.replace("'", "");
+    String b0 = b.replace("_", "");
+    String b1 = b0.replace(" ", "_");
+    String b2 = b1.replace(".", "");
+    String blackCardContent = b2.toLowerCase();
+
+    double weight = 0.0;
+
+
+    String uri = "http://api.conceptnet.io/related/c/en/" + blackCardContent + "?filter=/c/en/" + whiteCardContent;
+    // String uri = "http://api.conceptnet.io/related/c/en/tea_kettle?filter=/c/en/coffee_pot";
+
+    logger.info(uri);
 
     HttpClient client = HttpClients.createDefault();
-
     URIBuilder builder = null;
+
     try {
       builder = new URIBuilder(uri);
     } catch (URISyntaxException e) {
@@ -1844,7 +1866,6 @@ public class Game {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    int getStatusCode = getResponse.getStatusLine().getStatusCode();
 
     try {
       String responseAsString = EntityUtils.toString(getResponse.getEntity());
@@ -1852,9 +1873,10 @@ public class Game {
 
       JSONObject obj = new JSONObject(responseAsString);
       JSONArray arr = obj.getJSONArray("related");
+
       for (int i = 0; i < arr.length(); i++)
       {
-        double weight = arr.getJSONObject(i).getDouble("weight");
+        weight = arr.getJSONObject(i).getDouble("weight");
         logger.info(String.format("URI weight %f.", weight));
       }
 
@@ -1863,10 +1885,14 @@ public class Game {
     }
 
 
-    return 0.0;
+    // return the value of the weight
+    if (weight > 0){
+      return weight;
+    } else {
+      return 0.0;
+    }
 
   }
-
 
 
 }
