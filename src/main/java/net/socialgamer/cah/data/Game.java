@@ -53,6 +53,8 @@ import net.socialgamer.cah.data.GameManager.GameId;
 import net.socialgamer.cah.data.QueuedMessage.MessageType;
 import net.socialgamer.cah.task.SafeTimerTask;
 
+import java.sql.*;
+
 
 /**
  * Game data and logic class. Games are simple finite state machines, with 3 states that wait for
@@ -215,6 +217,52 @@ public class Game {
       players.add(player);
       if (host == null) {
         host = player;
+      }
+      String nick = user.getNickname().toLowerCase();
+
+      // Check if user in model
+      Connection c = null;
+      Statement stmt = null;
+      boolean userNotExists = true;
+      try {
+        Class.forName("org.sqlite.JDBC");
+        c = DriverManager.getConnection("jdbc:sqlite:pyx.sqlite");
+        c.setAutoCommit(false);
+        System.out.println("Opened database successfully");
+
+        stmt = c.createStatement();
+        ResultSet rs = stmt.executeQuery( "SELECT * FROM users WHERE name = \"" + nick + "\";");
+        while ( rs.next() ) {
+          userNotExists = false;
+        }
+        rs.close();
+        stmt.close();
+        c.close();
+      } catch ( Exception e ) {
+        System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+        System.exit(0);
+      }
+      if (userNotExists){
+        Connection c1 = null;
+        Statement stmt1 = null;
+        try {
+          Class.forName("org.sqlite.JDBC");
+          c1 = DriverManager.getConnection("jdbc:sqlite:pyx.sqlite");
+          c1.setAutoCommit(false);
+          System.out.println("Opened database successfully");
+
+          stmt1 = c1.createStatement();
+          String sql = "INSERT INTO users (name,deathHarm,random,sexual,political,human,religion,controversial,gross,scientific,racism,location,celebrity) " +
+                  "VALUES (\""+ nick +"\",0.083, 0.083, 0.083, 0.083, 0.083, 0.083, 0.083, 0.083, 0.083, 0.083, 0.083, 0.083);";
+          stmt1.executeUpdate(sql);
+
+          stmt1.close();
+          c1.commit();
+          c1.close();
+        } catch ( Exception e ) {
+          System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+          System.exit(0);
+        }
       }
     }
 
