@@ -1579,23 +1579,23 @@ public class Game {
     List<WhiteCard> aiCards = p.getHand(); // Gets AIs hand
     Player currentJudge = getJudge(); // Gets the current judge player
 
-    // Selects the first card (or fist 2 cards if pick 2) TODO remove
-    if (blackCard.getPick() == 3){
-      playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText());
-      playCard(p.getUser(), aiCards.get(1).getId(), aiCards.get(1).getText());
-      playCard(p.getUser(), aiCards.get(2).getId(), aiCards.get(2).getText());
-    }
-    if (blackCard.getPick() == 2){
-      playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText());
-      playCard(p.getUser(), aiCards.get(1).getId(), aiCards.get(1).getText());
-    } else {
-      playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText());
-    }
-
-//    List<WhiteCard> cardsToPlay = chooseBestCardsToPlay(aiCards, currentJudge, blackCard.getPick());
-//    for (WhiteCard wc : cardsToPlay){
-//      playCard(p.getUser(), wc.getId(), wc.getText());
+//    // Selects the first card (or fist 2 cards if pick 2) TODO remove
+//    if (blackCard.getPick() == 3){
+//      playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText());
+//      playCard(p.getUser(), aiCards.get(1).getId(), aiCards.get(1).getText());
+//      playCard(p.getUser(), aiCards.get(2).getId(), aiCards.get(2).getText());
 //    }
+//    if (blackCard.getPick() == 2){
+//      playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText());
+//      playCard(p.getUser(), aiCards.get(1).getId(), aiCards.get(1).getText());
+//    } else {
+//      playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText());
+//    }
+
+    List<WhiteCard> cardsToPlay = chooseBestCardsToPlay(aiCards, currentJudge, blackCard.getPick());
+    for (WhiteCard wc : cardsToPlay){
+      playCard(p.getUser(), wc.getId(), wc.getText());
+    }
   }
 
   /**
@@ -1607,8 +1607,67 @@ public class Game {
    * @return list of cards to play
    */
   private List<WhiteCard> chooseBestCardsToPlay(List<WhiteCard> hand, Player judge, int c){
-    //TODO
-    return null;
+    double[] playerModel = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+    Connection c2 = null;
+    Statement stmt = null;
+    boolean userNotExists = true;
+    try {
+      Class.forName("org.sqlite.JDBC");
+      c2 = DriverManager.getConnection("jdbc:sqlite:pyx.sqlite");
+      c2.setAutoCommit(false);
+      System.out.println("Opened database successfully");
+
+      stmt = c2.createStatement();
+      ResultSet rs = stmt.executeQuery( "SELECT * FROM users WHERE name = \"" + judge.getUser().getNickname() + "\";");
+      while ( rs.next() ) {
+        playerModel[0] = rs.getDouble("deathHarm");
+        playerModel[1] = rs.getDouble("random");
+        playerModel[2] = rs.getDouble("sexual");
+        playerModel[3] = rs.getDouble("political");
+        playerModel[4] = rs.getDouble("human");
+        playerModel[5] = rs.getDouble("religion");
+        playerModel[6] = rs.getDouble("controversial");
+        playerModel[7] = rs.getDouble("gross");
+        playerModel[8] = rs.getDouble("scientific");
+        playerModel[9] = rs.getDouble("racism");
+        playerModel[10] = rs.getDouble("location");
+        playerModel[11] = rs.getDouble("celebrity");
+      }
+      rs.close();
+      stmt.close();
+      c2.close();
+    } catch ( Exception e ) {
+      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+      System.exit(0);
+    }
+    Pair[] cards = new Pair[hand.size()];
+    int index = 0;
+    for (WhiteCard wc : hand){
+      double temp = 0;
+      temp += playerModel[0] * wc.getDeathHarm();
+      temp += playerModel[1] * wc.getRandom();
+      temp += playerModel[2] * wc.getSexual();
+      temp += playerModel[3] * wc.getPolitical();
+      temp += playerModel[4] * wc.getHuman();
+      temp += playerModel[5] * wc.getReligion();
+      temp += playerModel[6] * wc.getControversial();
+      temp += playerModel[7] * wc.getGross();
+      temp += playerModel[8] * wc.getScientific();
+      temp += playerModel[9] * wc.getRacism();
+      temp += playerModel[10] * wc.getLocation();
+      temp += playerModel[11] * wc.getCelebrity();
+
+      cards[index] = new Pair(index,temp);
+      index++;
+    }
+    Arrays.sort(cards);
+
+    List<WhiteCard> chosen = new LinkedList<WhiteCard>();
+    chosen.add(hand.get(cards[0].index));
+    if (c == 2){
+      chosen.add(hand.get(cards[1].index));
+    }
+    return chosen;
   }
 
   /**
