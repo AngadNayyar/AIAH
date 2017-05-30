@@ -31,6 +31,8 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 
@@ -52,6 +54,21 @@ import net.socialgamer.cah.cardcast.CardcastService;
 import net.socialgamer.cah.data.GameManager.GameId;
 import net.socialgamer.cah.data.QueuedMessage.MessageType;
 import net.socialgamer.cah.task.SafeTimerTask;
+import java.io.*;
+import java.net.*;
+import javax.xml.xpath.*;
+import org.apache.http.*;
+import org.apache.http.client.*;
+import org.apache.http.client.methods.*;
+import org.apache.http.client.utils.*;
+import org.apache.http.entity.*;
+import org.json.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.*;
+import org.json.simple.parser.*;
+import org.xml.sax.*;
+
 
 
 /**
@@ -1598,6 +1615,9 @@ public class Game {
     // Picks the first card from the first list TODO remove
     List<WhiteCard> pickedCards = cardsToPick.iterator().next();
 
+    // do this for each card and add to the user model calc
+    double relatedness = calculateRelatedness();
+
     return pickedCards.get(0).getId();
   }
 
@@ -1611,4 +1631,66 @@ public class Game {
     //TODO
     return 0;
   }
+
+
+  // this is to calculate the sense with concept net.
+  private double calculateRelatedness() {
+
+    logger.info("-----------------calculate relatedness-------------------");
+
+    String uri = "http://api.conceptnet.io/related/c/en/tea_kettle?filter=/c/en/coffee_pot";
+
+    HttpClient client = HttpClients.createDefault();
+
+    URIBuilder builder = null;
+    try {
+      builder = new URIBuilder(uri);
+    } catch (URISyntaxException e) {
+      e.printStackTrace();
+    }
+    String uriString = null;
+    try {
+      uriString = builder.build().toString();
+    } catch (URISyntaxException e) {
+      e.printStackTrace();
+    }
+
+    HttpGet getMethod = new HttpGet(uriString);
+    HttpResponse getResponse = null;
+    try {
+      getResponse = client.execute(getMethod);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    int getStatusCode = getResponse.getStatusLine().getStatusCode();
+
+
+    try {
+      String responseAsString = EntityUtils.toString(getResponse.getEntity());
+      logger.info(String.format("URI response entity: %s.", responseAsString));
+
+
+      JSONParser parser = new JSONParser();
+      JSONObject obj = (JSONObject) parser.parse(responseAsString);
+
+      JSONArray arr = obj.getJSONArray("related");
+      for (int i = 0; i < arr.length(); i++)
+      {
+        String weight = arr.getJSONObject(i).getString("weight");
+        logger.info(String.format("URI weight %s.", weight));
+      }
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    } catch (org.json.simple.parser.ParseException e) {
+      e.printStackTrace();
+    }
+
+
+    return 0.0;
+
+  }
+
+
+
 }
