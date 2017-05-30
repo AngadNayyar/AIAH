@@ -1528,14 +1528,34 @@ public class Game {
    * @param p AI player
    */
   private void chooseCardToPlayAI(Player p){
-    List<WhiteCard> aiCards = p.getHand();
-    // Selects the first card (or fist 2 cards if pick 2)
+    List<WhiteCard> aiCards = p.getHand(); // Gets AIs hand
+    Player currentJudge = getJudge(); // Gets the current judge player
+
+    // Selects the first card (or fist 2 cards if pick 2) TODO remove
     if (blackCard.getPick() == 2){
       playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText());
       playCard(p.getUser(), aiCards.get(1).getId(), aiCards.get(1).getText());
     } else {
       playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText());
     }
+
+//    List<WhiteCard> cardsToPlay = chooseBestCardsToPlay(aiCards, currentJudge, blackCard.getPick());
+//    for (WhiteCard wc : cardsToPlay){
+//      playCard(p.getUser(), wc.getId(), wc.getText());
+//    }
+  }
+
+  /**
+   * Returns a list of the best cards to play based off of the player (judge) that is passed to it.
+   * Will return a list of either 1 or 2, depending on c
+   * @param hand list of cards representing AIs hand
+   * @param judge player whose player model will decide best cards to play
+   * @param c number of cards to be returned, eg if play 2, list will be of size 2
+   * @return list of cards to play
+   */
+  private List<WhiteCard> chooseBestCardsToPlay(List<WhiteCard> hand, Player judge, int c){
+    //TODO
+    return null;
   }
 
   /**
