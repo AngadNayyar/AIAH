@@ -37,4 +37,5 @@ public class BlankWhiteCard extends WhiteCard {
   public boolean isWriteIn() {
     return true;
   }
+
 }

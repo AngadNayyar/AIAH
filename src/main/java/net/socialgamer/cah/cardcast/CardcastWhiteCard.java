@@ -34,4 +34,5 @@ public class CardcastWhiteCard extends WhiteCard {
   public boolean isWriteIn() {
     return false;
   }
+
 }

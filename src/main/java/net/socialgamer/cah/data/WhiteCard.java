@@ -32,7 +32,7 @@ public abstract class WhiteCard {
   /**
    * @return Client representation of this card.
    */
-  public final Map<WhiteCardData, Object> getClientData() {
+  public Map<WhiteCardData, Object> getClientData() {
     final Map<WhiteCardData, Object> cardData = new HashMap<WhiteCardData, Object>();
     cardData.put(WhiteCardData.ID, getId());
     cardData.put(WhiteCardData.TEXT, getText());

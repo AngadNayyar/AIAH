@@ -43,7 +43,7 @@ public class GameOptions {
   public static final int DEFAULT_SCORE_LIMIT = 8;
   public static final int MAX_SCORE_LIMIT = 69;
   public static final int MIN_PLAYER_LIMIT = 3;
-  public static final int DEFAULT_PLAYER_LIMIT = 10;
+  public static final int DEFAULT_PLAYER_LIMIT = 3;
   public static final int MAX_PLAYER_LIMIT = 20;
   public static final int MIN_SPECTATOR_LIMIT = 0;
   public static final int DEFAULT_SPECTATOR_LIMIT = 10;

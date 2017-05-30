@@ -52,7 +52,7 @@ if (color != null) {
     final String text = request.getParameter("text");
     final String pick_s = request.getParameter("pick");
     final String draw_s = request.getParameter("draw");
-    
+
     if (text == null || "".equals(text) || pick_s == null || "".equals(pick_s) || draw_s == null ||
         "".equals(draw_s)) {
       error = "You didn't specify something.";
@@ -85,7 +85,7 @@ if (color != null) {
     }
   } else if ("white".equals(color)) {
     final String text = request.getParameter("text");
-    
+
     if (text == null || "".equals(text)) {
       error = "You didn't specify something.";
     } else {

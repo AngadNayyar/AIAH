@@ -23,16 +23,16 @@
 
 package net.socialgamer.cah.db;
 
-import javax.persistence.Cacheable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+import net.socialgamer.cah.Constants;
 import net.socialgamer.cah.data.WhiteCard;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -52,7 +52,124 @@ public class PyxWhiteCard extends WhiteCard {
 
   private String text;
 
+  private double deathHarm;
+  private double random;
+  private double sexual;
+  private double political;
+  private double human;
+  private double religion;
+  private double controversial;
+  private double gross;
+  private double scientific;
+  private double racism;
+  private double location;
+  private double celebrity;
+
   private String watermark;
+
+  public void setRandom(double random) {
+    this.random = random;
+  }
+
+  public void setPolitical(double political) {
+    this.political = political;
+  }
+
+  public void setHuman(double human) {
+    this.human = human;
+  }
+
+  public void setReligion(double religion) {
+    this.religion = religion;
+  }
+
+  public void setControversial(double controversial) {
+    this.controversial = controversial;
+  }
+
+  public void setGross(double gross) {
+    this.gross = gross;
+  }
+
+  public void setScientific(double scientific) {
+    this.scientific = scientific;
+  }
+
+  public void setRacism(double racism) {
+    this.racism = racism;
+  }
+
+  public void setLocation(double location) {
+    this.location = location;
+  }
+
+  public void setCelebrity(double celebrity) {
+    this.celebrity = celebrity;
+  }
+
+  public double getSexual() {
+    return sexual;
+  }
+
+  public void setSexual(double sexual) {
+    this.sexual = sexual;
+  }
+
+  public double getPolitical() {
+    return political;
+  }
+
+  public double getHuman() {
+    return human;
+  }
+
+  public double getReligion() {
+    return religion;
+  }
+
+  public double getControversial() {
+    return controversial;
+  }
+
+  public double getGross() {
+    return gross;
+  }
+
+  public double getScientific() {
+    return scientific;
+  }
+
+  public double getRacism() {
+    return racism;
+  }
+
+  public double getLocation() {
+    return location;
+  }
+
+  public double getCelebrity() {
+    return celebrity;
+  }
+
+
+  public double getRandom() {
+    return random;
+  }
+
+
+  /**
+   * @return Client representation of this card.
+   */
+  @Override
+  public final Map<Constants.WhiteCardData, Object> getClientData() {
+    final Map<Constants.WhiteCardData, Object> cardData = new HashMap<Constants.WhiteCardData, Object>();
+    cardData.put(Constants.WhiteCardData.ID, getId());
+    cardData.put(Constants.WhiteCardData.TEXT, getText());
+    cardData.put(Constants.WhiteCardData.WATERMARK, getWatermark());
+    cardData.put(Constants.WhiteCardData.WRITE_IN, isWriteIn());
+    cardData.put(Constants.WhiteCardData.DEATHHARM, getDeathHarm());
+    return cardData;
+  }
 
   @Override
   public int getId() {
@@ -88,4 +205,19 @@ public class PyxWhiteCard extends WhiteCard {
   public boolean isWriteIn() {
     return false;
   }
+
+ public double getDeathHarm() { return deathHarm; }
+
+  public void setDeathHarm(final double deathHarm) {
+    this.deathHarm = deathHarm;
+  }
+
+
+  @Override
+  public String toString() {
+    return String.format("%s %s (id:%d, watermark:%s, death: %f, random: %f, sexual: %f, political: %f, human: %f, religion: %f, controversial: %f, gross: %f, scientific: %f, racism: %f, location: %f, celebrity: %f)", getClass().getName(), getText(), getId(),
+            getWatermark(), getDeathHarm(), getRandom(), getSexual(),getPolitical(), getHuman(), getReligion(), getControversial(), getGross(),
+            getScientific(), getRacism(), getLocation(), getCelebrity());
+  }
 }
+
