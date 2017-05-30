@@ -226,10 +226,8 @@ public class Game {
       boolean userNotExists = true;
       try {
         Class.forName("org.sqlite.JDBC");
-        c = DriverManager.getConnection("jdbc:sqlite:pyx.sqlite");
+        c = DriverManager.getConnection("jdbc:sqlite:pyx1.sqlite");
         c.setAutoCommit(false);
-        System.out.println("Opened database successfully");
-
         stmt = c.createStatement();
         ResultSet rs = stmt.executeQuery( "SELECT * FROM users WHERE name = \"" + nick + "\";");
         while ( rs.next() ) {
@@ -247,9 +245,8 @@ public class Game {
         Statement stmt1 = null;
         try {
           Class.forName("org.sqlite.JDBC");
-          c1 = DriverManager.getConnection("jdbc:sqlite:pyx.sqlite");
+          c1 = DriverManager.getConnection("jdbc:sqlite:pyx1.sqlite");
           c1.setAutoCommit(false);
-          System.out.println("Opened database successfully");
 
           stmt1 = c1.createStatement();
           String sql = "INSERT INTO users (name,deathHarm,random,sexual,political,human,religion,controversial,gross,scientific,racism,location,celebrity) " +
@@ -1508,6 +1505,86 @@ public class Game {
       state = GameState.ROUND_OVER;
     }
     final int clientCardId = playedCards.getCards(cardPlayer).get(0).getId();
+    WhiteCard wc = playedCards.getCards(cardPlayer).get(0);
+
+    //Get the judges model
+    double[] playerModel = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+    Connection c4 = null;
+    Statement stmt = null;
+    try {
+      Class.forName("org.sqlite.JDBC");
+      c4 = DriverManager.getConnection("jdbc:sqlite:pyx1.sqlite");
+      c4.setAutoCommit(false);
+
+      stmt = c4.createStatement();
+      ResultSet rs = stmt.executeQuery( "SELECT * FROM users WHERE name = \"" + user.getNickname() + "\";");
+      while ( rs.next() ) {
+        playerModel[0] = rs.getDouble("deathHarm");
+        playerModel[1] = rs.getDouble("random");
+        playerModel[2] = rs.getDouble("sexual");
+        playerModel[3] = rs.getDouble("political");
+        playerModel[4] = rs.getDouble("human");
+        playerModel[5] = rs.getDouble("religion");
+        playerModel[6] = rs.getDouble("controversial");
+        playerModel[7] = rs.getDouble("gross");
+        playerModel[8] = rs.getDouble("scientific");
+        playerModel[9] = rs.getDouble("racism");
+        playerModel[10] = rs.getDouble("location");
+        playerModel[11] = rs.getDouble("celebrity");
+      }
+      rs.close();
+      stmt.close();
+      c4.close();
+    } catch ( Exception e ) {
+      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+      System.exit(0);
+    }
+
+    // Get new user model values
+
+    playerModel[0] += playerModel[0] * wc.getDeathHarm() * 0.1;
+    playerModel[1] += playerModel[1] * wc.getRandom() * 0.1;
+    playerModel[2] += playerModel[2] * wc.getSexual() * 0.1;
+    playerModel[3] += playerModel[3] * wc.getPolitical() * 0.1;
+    playerModel[4] += playerModel[4] * wc.getHuman() * 0.1;
+    playerModel[5] += playerModel[5] * wc.getReligion() * 0.1;
+    playerModel[6] += playerModel[6] * wc.getControversial() * 0.1;
+    playerModel[7] += playerModel[7] * wc.getGross() * 0.1;
+    playerModel[8] += playerModel[8] * wc.getScientific() * 0.1;
+    playerModel[9] += playerModel[9] * wc.getRacism() * 0.1;
+    playerModel[10] += playerModel[10] * wc.getLocation() * 0.1;
+    playerModel[11] += playerModel[11] * wc.getCelebrity() * 0.1;
+
+    // Update user model
+
+    Connection c5 = null;
+    Statement stmt3 = null;
+    try {
+      Class.forName("org.sqlite.JDBC");
+      c5 = DriverManager.getConnection("jdbc:sqlite:pyx1.sqlite");
+      c5.setAutoCommit(false);
+
+      System.out.println("UPDATE users set deathHarm = " + playerModel[0] + ", random = " + playerModel[1] + ", sexual = " + playerModel[2]
+              + ", political = " + playerModel[3] + ", human = " + playerModel[4] + ", religion = " + playerModel[5] +
+              ", controversial = " + playerModel[6] + ", gross = " + playerModel[7] + ", scientific = " + playerModel[8] +
+              ", racism = " + playerModel[9] + ", location = " + playerModel[10] + ", celebrity = " + playerModel[11] +
+              " WHERE name=\"" + user.getNickname() + "\";");
+
+      stmt3 = c5.createStatement();
+      String sql = "UPDATE users set deathHarm = " + playerModel[0] + ", random = " + playerModel[1] + ", sexual = " + playerModel[2]
+              + ", political = " + playerModel[3] + ", human = " + playerModel[4] + ", religion = " + playerModel[5] +
+              ", controversial = " + playerModel[6] + ", gross = " + playerModel[7] + ", scientific = " + playerModel[8] +
+              ", racism = " + playerModel[9] + ", location = " + playerModel[10] + ", celebrity = " + playerModel[11] +
+              " WHERE name=\"" + user.getNickname() + "\";";
+      stmt3.executeUpdate(sql);
+      c5.commit();
+
+      stmt3.close();
+      c5.close();
+    } catch ( Exception e ) {
+      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+      System.exit(0);
+    }
 
     final HashMap<ReturnableData, Object> data = getEventMap();
     data.put(LongPollResponse.EVENT, LongPollEvent.GAME_ROUND_COMPLETE.toString());
@@ -1613,9 +1690,8 @@ public class Game {
     boolean userNotExists = true;
     try {
       Class.forName("org.sqlite.JDBC");
-      c2 = DriverManager.getConnection("jdbc:sqlite:pyx.sqlite");
+      c2 = DriverManager.getConnection("jdbc:sqlite:pyx1.sqlite");
       c2.setAutoCommit(false);
-      System.out.println("Opened database successfully");
 
       stmt = c2.createStatement();
       ResultSet rs = stmt.executeQuery( "SELECT * FROM users WHERE name = \"" + judge.getUser().getNickname() + "\";");
