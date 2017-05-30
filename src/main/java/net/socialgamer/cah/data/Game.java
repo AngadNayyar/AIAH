@@ -1558,18 +1558,18 @@ public class Game {
 
     // Get new user model values
 
-    playerModel[0] += playerModel[0] * wc.getDeathHarm() * 0.1;
-    playerModel[1] += playerModel[1] * wc.getRandom() * 0.1;
-    playerModel[2] += playerModel[2] * wc.getSexual() * 0.1;
-    playerModel[3] += playerModel[3] * wc.getPolitical() * 0.1;
-    playerModel[4] += playerModel[4] * wc.getHuman() * 0.1;
-    playerModel[5] += playerModel[5] * wc.getReligion() * 0.1;
-    playerModel[6] += playerModel[6] * wc.getControversial() * 0.1;
-    playerModel[7] += playerModel[7] * wc.getGross() * 0.1;
-    playerModel[8] += playerModel[8] * wc.getScientific() * 0.1;
-    playerModel[9] += playerModel[9] * wc.getRacism() * 0.1;
-    playerModel[10] += playerModel[10] * wc.getLocation() * 0.1;
-    playerModel[11] += playerModel[11] * wc.getCelebrity() * 0.1;
+    playerModel[0] += playerModel[0] * wc.getDeathHarm() * 0.5;
+    playerModel[1] += playerModel[1] * wc.getRandom() * 0.5;
+    playerModel[2] += playerModel[2] * wc.getSexual() * 0.5;
+    playerModel[3] += playerModel[3] * wc.getPolitical() * 0.5;
+    playerModel[4] += playerModel[4] * wc.getHuman() * 0.5;
+    playerModel[5] += playerModel[5] * wc.getReligion() * 0.5;
+    playerModel[6] += playerModel[6] * wc.getControversial() * 0.5;
+    playerModel[7] += playerModel[7] * wc.getGross() * 0.5;
+    playerModel[8] += playerModel[8] * wc.getScientific() * 0.5;
+    playerModel[9] += playerModel[9] * wc.getRacism() * 0.5;
+    playerModel[10] += playerModel[10] * wc.getLocation() * 0.5;
+    playerModel[11] += playerModel[11] * wc.getCelebrity() * 0.5;
 
     // Update user model
 
