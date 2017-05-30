@@ -1532,6 +1532,11 @@ public class Game {
     Player currentJudge = getJudge(); // Gets the current judge player
 
     // Selects the first card (or fist 2 cards if pick 2) TODO remove
+    if (blackCard.getPick() == 3){
+      playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText());
+      playCard(p.getUser(), aiCards.get(1).getId(), aiCards.get(1).getText());
+      playCard(p.getUser(), aiCards.get(2).getId(), aiCards.get(2).getText());
+    }
     if (blackCard.getPick() == 2){
       playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText());
       playCard(p.getUser(), aiCards.get(1).getId(), aiCards.get(1).getText());
@@ -1547,7 +1552,7 @@ public class Game {
 
   /**
    * Returns a list of the best cards to play based off of the player (judge) that is passed to it.
-   * Will return a list of either 1 or 2, depending on c
+   * Will return a list of either 1, 2 or 3, depending on c
    * @param hand list of cards representing AIs hand
    * @param judge player whose player model will decide best cards to play
    * @param c number of cards to be returned, eg if play 2, list will be of size 2
