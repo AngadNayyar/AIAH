@@ -23,17 +23,7 @@
 
 package net.socialgamer.cah.data;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -837,6 +827,8 @@ public class Game {
 
     broadcastToPlayers(MessageType.GAME_EVENT, data);
 
+    playCardIfAI();
+
     synchronized (roundTimerLock) {
       final SafeTimerTask task = new SafeTimerTask() {
         @Override
@@ -1050,6 +1042,8 @@ public class Game {
     broadcastToPlayers(MessageType.GAME_EVENT, data);
 
     notifyPlayerInfoChange(getJudge());
+
+    judgeCardIfAI();
 
     synchronized (roundTimerLock) {
       final SafeTimerTask task = new SafeTimerTask() {
@@ -1513,5 +1507,108 @@ public class Game {
    */
   public class TooManySpectatorsException extends Exception {
     private static final long serialVersionUID = -6603422097641992018L;
+  }
+
+  /**
+   * Method that checks if AI is playing and if so, selects a card to play
+   */
+  private void playCardIfAI(){
+    // Finds AI player and plays card
+    for (Player p : players){
+      // Chooses a card if the player is an AI (and isn't a judge)
+      if( (p.getUser().isARobot()) && !(getJudge().getUser().isARobot()) ){
+        chooseCardToPlayAI(p);
+        return;
+      }
+    }
+  }
+
+  /**
+   * Method that determines the card to play, then plays it
+   * @param p AI player
+   */
+  private void chooseCardToPlayAI(Player p){
+    List<WhiteCard> aiCards = p.getHand(); // Gets AIs hand
+    Player currentJudge = getJudge(); // Gets the current judge player
+
+    // Selects the first card (or fist 2 cards if pick 2) TODO remove
+    if (blackCard.getPick() == 3){
+      playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText());
+      playCard(p.getUser(), aiCards.get(1).getId(), aiCards.get(1).getText());
+      playCard(p.getUser(), aiCards.get(2).getId(), aiCards.get(2).getText());
+    }
+    if (blackCard.getPick() == 2){
+      playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText());
+      playCard(p.getUser(), aiCards.get(1).getId(), aiCards.get(1).getText());
+    } else {
+      playCard(p.getUser(), aiCards.get(0).getId(), aiCards.get(0).getText());
+    }
+
+//    List<WhiteCard> cardsToPlay = chooseBestCardsToPlay(aiCards, currentJudge, blackCard.getPick());
+//    for (WhiteCard wc : cardsToPlay){
+//      playCard(p.getUser(), wc.getId(), wc.getText());
+//    }
+  }
+
+  /**
+   * Returns a list of the best cards to play based off of the player (judge) that is passed to it.
+   * Will return a list of either 1, 2 or 3, depending on c
+   * @param hand list of cards representing AIs hand
+   * @param judge player whose player model will decide best cards to play
+   * @param c number of cards to be returned, eg if play 2, list will be of size 2
+   * @return list of cards to play
+   */
+  private List<WhiteCard> chooseBestCardsToPlay(List<WhiteCard> hand, Player judge, int c){
+    //TODO
+    return null;
+  }
+
+  /**
+   * Method that checks if the AI is the judge, and if so chooses card that wins
+   */
+  private void judgeCardIfAI(){
+    if (getJudge().getUser().isARobot()) {
+      int pickedCardId = chooseWinningCardAI();
+      judgeCard(getJudge().getUser(), pickedCardId );
+      startNextRound(); // This forces the next round to start, there is no timer
+    }
+  }
+
+  /**
+   * Determines the winning card to be chosen by the AI
+   * @return winning cards id
+   */
+  private int chooseWinningCardAI(){
+    // Get the cards that have been played
+    Collection<List<WhiteCard>> cardsToPick = playedCards.cards(); // Gets the lists of cards (pick 2 means it has to be a list)
+//    int bestRating = 0;
+//    WhiteCard bestCard = cardsToPick.iterator().next().get(0); // Best card is the fist card
+//
+//    // Look through each players selection
+//    for (List<WhiteCard> wc : cardsToPick){
+//      WhiteCard chosenCard = wc.get(0); // TODO handle pick 2
+//      Player playerWhoPlayedCard = playedCards.getPlayerForId(chosenCard.getId());
+//      int rating = cardScore(chosenCard, playerWhoPlayedCard);
+//      if ( rating > bestRating){
+//        bestRating = rating;
+//        bestCard = chosenCard;
+//      }
+//    }
+
+    // Picks the first card from the first list TODO remove
+    List<WhiteCard> pickedCards = cardsToPick.iterator().next();
+
+    return pickedCards.get(0).getId();
+  }
+
+  /**
+   * Calculates the score of a card based off of a player
+   * @param wc WhiteCard scores to be calculated for
+   * @param p Player to whose player model is used to calculate score
+   * @return score for that card
+   */
+  private int cardScore(WhiteCard wc, Player p){
+    //TODO
+    return 0;
   }
 }
