@@ -212,10 +212,12 @@ public class PyxWhiteCard extends WhiteCard {
     this.deathHarm = deathHarm;
   }
 
+
   @Override
   public String toString() {
-    return String.format("%s %s (id:%d, watermark:%s, death: %f)", getClass().getName(), getText(), getId(),
-            getWatermark(), getDeathHarm());
+    return String.format("%s %s (id:%d, watermark:%s, death: %f, random: %f, sexual: %f, political: %f, human: %f, religion: %f, controversial: %f, gross: %f, scientific: %f, racism: %f, location: %f, celebrity: %f)", getClass().getName(), getText(), getId(),
+            getWatermark(), getDeathHarm(), getRandom(), getSexual(),getPolitical(), getHuman(), getReligion(), getControversial(), getGross(),
+            getScientific(), getRacism(), getLocation(), getCelebrity());
   }
 }
 
