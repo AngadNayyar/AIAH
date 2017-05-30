@@ -1595,10 +1595,17 @@ public class Game {
 //      }
 //    }
 
-    // Picks the first card from the first list TODO remove
-    List<WhiteCard> pickedCards = cardsToPick.iterator().next();
-
-    return pickedCards.get(0).getId();
+    // Picks the a card from a randomly chosen list TODO remove
+    Random random = new Random();
+    int i = random.nextInt(cardsToPick.size()); // Random int size of collection
+    int j = 0;
+    for (List<WhiteCard> pickedCards: cardsToPick){
+      if (j == i){
+        return pickedCards.get(0).getId();
+      }
+      j++;
+    }
+    return 0;
   }
 
   /**
